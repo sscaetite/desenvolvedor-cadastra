@@ -193,6 +193,7 @@
       cursor: pointer;
       color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
+      padding: 0;
 
       &[data-selected="true"] {
         border-color: #fb953e;
