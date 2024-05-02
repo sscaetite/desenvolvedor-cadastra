@@ -48,7 +48,7 @@ O projeto possui um setup pronto no qual há a necessidade de possuir o nodejs i
 
 Para instalar as dependências só é preciso executar o comando: `npm install`
 
-O dar start no server e nos processos para desenvolvimento é necessário rodar o comando: `npm start `
+O dar start no server e nos processos para desenvolvimento é necessário rodar o comando: `npm start` para Linux e MacOS ou `npm start:win` para Windows.
 
 Uma ver que o comando é dado ele irá levantar 2 servidores, sendo eles:
  - um para acessar o front-end que roda na porta 3000. No qual pode ser acessado pela url: http://localhost:3000

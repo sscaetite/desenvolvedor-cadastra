@@ -1,19 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desenvolvedor Cadastra</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desenvolvedor Cadastra</title>
-  <link rel="stylesheet" href="main.css" />
-</head>
+  <body>
+    <script>
+      const openModal = (query) => {
+        if (!query || typeof query !== "string") return;
 
-<body>
+        const modalElement = document.querySelector(query);
 
-</body>
-<h1>Desafio Cadastra</h1>
+        if (!!modalElement) {
+          modalElement.classList.remove("hidden");
+          setTimeout(
+            () => (modalElement.style.transform = "translateX(0)"),
+            100
+          );
+        }
+      };
 
-<script src="bundle.js"></script>
+      const closeModal = (query) => {
+        if (!query || typeof query !== "string") return;
 
+        const modalElement = document.querySelector(query);
+
+        if (!!modalElement) {
+          modalElement.style.transform = "translateX(-100vw)";
+          setTimeout(() => modalElement.classList.add("hidden"), 200);
+        }
+      };
+    </script>
+    <header class="header">
+      <a href="/">
+        <img src="img/logo-cadastra.svg" alt="Cadastra" />
+      </a>
+      <div class="minicart">
+        <img src="img/minicart.png" alt="Ver carrinho" />
+        <span class="minicart-quantity hidden"></span>
+      </div>
+    </header>
+    <div class="main">
+      <!-- Título -->
+      <div class="main-title">
+        <div class="title-container">
+          <h1 class="title">Blusas</h1>
+          <div class="order-by-desktop">
+            <button class="order-by-desktop-button">
+              Ordenar: <img src="img/chevron-small.svg" />
+            </button>
+            <div class="order-by-desktop-container hidden">
+              <button
+                class="order-by-desktop-item modal-content-link"
+                data-sort="date"
+                data-order="desc"
+              >
+                Mais recente
+              </button>
+              <button
+                class="order-by-desktop-item modal-content-link"
+                data-sort="price"
+                data-order="desc"
+              >
+                Maior preço
+              </button>
+              <button
+                class="order-by-desktop-item modal-content-link"
+                data-sort="price"
+                data-order="asc"
+              >
+                Menor preço
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons-modals">
+        <button class="show-modal" onClick="openModal('.filter-by-modal')">
+          Filtrar
+        </button>
+        <button class="show-modal" onClick="openModal('.order-by-modal')">
+          Ordenar
+        </button>
+      </div>
+
+      <!-- Conteúdo principal -->
+      <div class="main-content">
+        <aside class="filters-sidebar">
+          <!-- Modal de filtros dektop -->
+          <div class="modal-filter-item colors">
+            <div class="modal-filter-trigger">
+              <span class="modal-filter-title">Cores</span>
+            </div>
+            <div class="modal-filter-content"></div>
+          </div>
+          <div class="modal-filter-item sizes">
+            <div class="modal-filter-trigger">
+              <span class="modal-filter-title">Tamanhos</span>
+            </div>
+            <div class="modal-filter-content"></div>
+          </div>
+          <div class="modal-filter-item prices">
+            <div class="modal-filter-trigger">
+              <span class="modal-filter-title">Faixa de preço</span>
+            </div>
+            <div class="modal-filter-content"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="filter-by-apply"
+              data-filter-colors=""
+              data-filter-sizes=""
+              data-filter-price-min=""
+              data-filter-price-max=""
+            >
+              Aplicar
+            </button>
+            <button class="filter-by-clean">Limpar</button>
+          </div>
+        </aside>
+        <div class="products-container">
+          <div class="products-shelf"></div>
+          <div class="products-load-more"></div>
+        </div>
+      </div>
+
+      <!-- Modal de ordenação mobile -->
+      <div class="order-by-modal modal hidden">
+        <div class="modal-header">
+          <span class="modal-header-title">Ordenar</span
+          ><button
+            class="modal-header-close"
+            onClick="closeModal('.order-by-modal')"
+          >
+            <img src="img/close.svg" />
+          </button>
+        </div>
+        <div class="modal-content">
+          <button data-sort="date" data-order="desc" class="modal-content-link">
+            Mais recente
+          </button>
+          <button
+            data-sort="price"
+            data-order="desc"
+            class="modal-content-link"
+          >
+            Maior preço
+          </button>
+          <button data-sort="price" data-order="asc" class="modal-content-link">
+            Menor preço
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal de filtros mobile -->
+      <div class="filter-by-modal modal hidden">
+        <div class="modal-header">
+          <span class="modal-header-title">Filtrar</span
+          ><button
+            class="modal-header-close"
+            onClick="closeModal('.filter-by-modal')"
+          >
+            <img src="img/close.svg" />
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="modal-filter-item colors">
+            <div class="modal-filter-trigger">
+              <span class="modal-filter-title">Cores</span>
+              <button class="modal-filter-chevron">
+                <img alt="Ver filtro de cores" src="img/chevron.svg" />
+              </button>
+            </div>
+            <div class="modal-filter-content hidden"></div>
+          </div>
+          <div class="modal-filter-item sizes">
+            <div class="modal-filter-trigger">
+              <span class="modal-filter-title">Tamanhos</span>
+              <button class="modal-filter-chevron">
+                <img alt="Ver filtro de cores" src="img/chevron.svg" />
+              </button>
+            </div>
+            <div class="modal-filter-content hidden"></div>
+          </div>
+          <div class="modal-filter-item prices">
+            <div class="modal-filter-trigger">
+              <span class="modal-filter-title">Faixa de preço</span>
+              <button class="modal-filter-chevron">
+                <img alt="Ver filtro de cores" src="img/chevron.svg" />
+              </button>
+            </div>
+            <div class="modal-filter-content hidden"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="filter-by-apply"
+              data-filter-colors=""
+              data-filter-sizes=""
+              data-filter-price-min=""
+              data-filter-price-max=""
+            >
+              Aplicar
+            </button>
+            <button class="filter-by-clean">Limpar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">CADASTRA: Implantação de E-commerce VTEX</footer>
+
+    <script src="bundle.js"></script>
+  </body>
 </html>
