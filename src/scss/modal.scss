@@ -11,6 +11,11 @@
   background-color: #fff;
   top: 0px;
   left: 0px;
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 
   &-header {
     border-bottom: 1px solid #666666;
@@ -150,7 +155,7 @@
       padding: 0;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: -26px;
         top: 0;
@@ -160,9 +165,9 @@
         box-sizing: border-box;
       }
 
-      &[data-selected="true"] {
+      &[data-selected='true'] {
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           left: -23px;
           top: 3px;
@@ -195,7 +200,7 @@
       box-sizing: border-box;
       padding: 0;
 
-      &[data-selected="true"] {
+      &[data-selected='true'] {
         border-color: #fb953e;
         color: #000;
       }
@@ -223,7 +228,7 @@
       padding: 0;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: -26px;
         top: 0;
@@ -233,9 +238,9 @@
         box-sizing: border-box;
       }
 
-      &[data-selected="true"] {
+      &[data-selected='true'] {
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           left: -23px;
           top: 3px;

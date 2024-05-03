@@ -20,28 +20,28 @@
 
   <body>
     <script>
-      const openModal = (query) => {
-        if (!query || typeof query !== "string") return;
+      const openModal = query => {
+        if (!query || typeof query !== 'string') return;
 
         const modalElement = document.querySelector(query);
 
         if (!!modalElement) {
-          modalElement.classList.remove("hidden");
+          modalElement.classList.remove('hidden');
           setTimeout(
-            () => (modalElement.style.transform = "translateX(0)"),
-            100
+            () => (modalElement.style.transform = 'translateX(0)'),
+            100,
           );
         }
       };
 
-      const closeModal = (query) => {
-        if (!query || typeof query !== "string") return;
+      const closeModal = query => {
+        if (!query || typeof query !== 'string') return;
 
         const modalElement = document.querySelector(query);
 
         if (!!modalElement) {
-          modalElement.style.transform = "translateX(-100vw)";
-          setTimeout(() => modalElement.classList.add("hidden"), 200);
+          modalElement.style.transform = 'translateX(-100vw)';
+          setTimeout(() => modalElement.classList.add('hidden'), 200);
         }
       };
     </script>
@@ -102,19 +102,19 @@
       <div class="main-content">
         <aside class="filters-sidebar">
           <!-- Modal de filtros dektop -->
-          <div class="modal-filter-item colors">
+          <div class="modal-filter-item colors hidden">
             <div class="modal-filter-trigger">
               <span class="modal-filter-title">Cores</span>
             </div>
             <div class="modal-filter-content"></div>
           </div>
-          <div class="modal-filter-item sizes">
+          <div class="modal-filter-item sizes hidden">
             <div class="modal-filter-trigger">
               <span class="modal-filter-title">Tamanhos</span>
             </div>
             <div class="modal-filter-content"></div>
           </div>
-          <div class="modal-filter-item prices">
+          <div class="modal-filter-item prices hidden">
             <div class="modal-filter-trigger">
               <span class="modal-filter-title">Faixa de preço</span>
             </div>
