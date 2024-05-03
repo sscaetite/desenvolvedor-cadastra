@@ -594,12 +594,18 @@ const addFilters = (products: Product[]): void => {
         ) as NodeListOf<HTMLButtonElement>;
 
         allPriceButtons.forEach(button => {
-          if (button === filterPriceButton)
+          if (
+            button === filterPriceButton &&
+            button.getAttribute('data-selected') !== 'true'
+          )
             button.setAttribute('data-selected', 'true');
           else button.setAttribute('data-selected', 'false');
         });
 
-        if (price.min || price.min === 0) {
+        if (
+          (price.min || price.min === 0) &&
+          filterPriceButton.getAttribute('data-selected') === 'true'
+        ) {
           applyFiltersButton.setAttribute(
             applyFiltersButtonAttr.priceMin,
             price.min.toString(),
@@ -607,7 +613,10 @@ const addFilters = (products: Product[]): void => {
         } else
           applyFiltersButton.removeAttribute(applyFiltersButtonAttr.priceMin);
 
-        if (price.max) {
+        if (
+          price.max &&
+          filterPriceButton.getAttribute('data-selected') === 'true'
+        ) {
           applyFiltersButton.setAttribute(
             applyFiltersButtonAttr.priceMax,
             price.max.toString(),
